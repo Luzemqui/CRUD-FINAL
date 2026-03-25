@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD de motocicletas - Lista de personas </title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../JAVASCRIPT/CRUD 2.js"></script>
+    <script src="../JAVASCRIPT/CRUD.js"></script>
+    <script src="../JAVASCRIPT/Grafica-y-reporte.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            margin: 0;
+            padding-top: 120px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #0004ff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 60px;
+            box-shadow: 0px 2px 5px rgb(0, 0, 0);
+            z-index: 1000;
+        }
+
+        .admin {
+            background-color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: #0004ff;
+            font-weight: bold;
+            font-size: 24px;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: color 0.80s ease;
+        }
+
+        .nav-links a:hover {
+            color: #1d1c1c;
+        }
+
+        .btn-regresar {
+            background-color: #b9ffff;
+            padding: 10px 40px;
+            border-radius: 40px;
+        }
+
+        .btn-grafica {
+            background-color: #b9ffff;
+            padding: 10px 30px;
+            border-radius: 40px;
+            cursor: pointer;
+        }
+
+        .crud-container {
+            max-width: 20000px;
+            max-height:200000px;
+            margin: 0, auto ;
+            padding: 70px 10px;
+        }
+
+        .grafica-section {
+            display: none;
+            margin-top: 2rem;
+        }
+
+        .grafica-section.show {
+            display: block;
+        }
+
+        canvas {
+            max-height: 400px;
+        }
+
+        .usuarios-table {
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+
+<body class="bg-light" onload="checkAdminAuth(); mostrar();">
+
+    <nav class="navbar">
+        <a href="#" class="admin">ADMIN</a>
+        <div class="nav-links">
+            <a href="#" onclick="logoutAdmin(); return false;" class="btn-regresar">REGRESAR</a>
+            <a href="#" onclick="toggleGrafica()" class="btn-grafica">GRAFICA  Y REPORTE </a>
+        </div>
+    </nav>
+
+    <div class="container-fluid crud-container">
+        <div class="row justify-content-center">
+<div class="col-12 col-lg-10">
+                <div class="card shadow mx-auto" style="max-width: 130000px", style="max-height: 1300000px;">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h4 class="mb-0">CRUD de motocicletas</h4>
+                    </div>
+                    <div class="card-body">
+                        <input type="hidden" id="indice">
+
+                        <div class="row mb-3 g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Nombre</label>
+                                <input type="text" id="nombre" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Precio</label>
+                                <input type="text" id="precio" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Cantidad</label>
+                                <input type="number" id="cantidad" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Placa</label>
+                                <input type="number" id="placa" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Marca</label>
+                                <input type="text" id="marca" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Modelo</label>
+                                <input type="text" id="modelo" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="mb-3 d-flex justify-content-center gap-3">
+                            <button class="btn btn-success" onclick="guardar()">Guardar</button>
+                            <button class="btn btn-warning" onclick="actualizar()">Actualizar</button>
+                        </div>
+
+                        <hr>
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th width="200">Nombre</th>
+                                        <th width="200">Precio</th>
+                                        <th width="200">Cantidad</th>
+                                        <th width="200">Placa</th>
+                                        <th width="200">Marca</th>
+                                        <th width="200">Modelo</th>
+                                        <th width="50">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabla"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="reporteModal" tabindex="-1" aria-labelledby="reporteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="reporteModalLabel">Reporte General</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="reporteContent"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid crud-container grafica-section" id="graficaSection">
+        <div class="row justify-content-center">
+<div class="col-12 col-lg-10">
+                <div class="card shadow mx-auto" style="max-width: 1300px;">
+                    <div class="card-header bg-success text-white text-center">
+                        <h4 class="mb-0">Gráfica y Reporte de Motocicletas</h4>
+                        <button class="btn btn-outline-light btn-sm mt-2" onclick="toggleGrafica()">← Volver a CRUD</button>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <canvas id="myChart"></canvas>
+                            </div>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
