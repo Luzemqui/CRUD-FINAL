@@ -1,7 +1,7 @@
-let personas = JSON.parse(localStorage.getItem('motocicletas')) || [];
+let personas = JSON.parse(localStorage.getItem('clientes')) || [];
 
 function guardar() {
-    let nombre = document.getElementById("nombre_cliente").value;
+    let nombre = document.getElementById("nombre").value;
     let precio = document.getElementById("precio").value;
     let placa = document.getElementById("placa").value;
     let marca = document.getElementById("marca").value;
@@ -20,14 +20,14 @@ function guardar() {
         };
 
         personas.push(persona);
-        localStorage.setItem('motocicletas', JSON.stringify(personas));
+        localStorage.setItem('clientes', JSON.stringify(personas));
         limpiar();
         mostrar();
     }
 }
 
 function mostrar() {
-    personas = JSON.parse(localStorage.getItem('motocicletas')) || [];
+    personas = JSON.parse(localStorage.getItem('clientes')) || [];
     let tabla = document.getElementById("tabla");
     tabla.innerHTML = "";
 
@@ -75,7 +75,7 @@ function actualizar() {
         personas[i].marca = marca;
         personas[i].modelo = modelo;
 
-        localStorage.setItem('motocicletas', JSON.stringify(personas));
+        localStorage.setItem('clientes', JSON.stringify(personas));
         limpiar();
         mostrar();
     }
@@ -84,7 +84,7 @@ function actualizar() {
 function eliminar(i) {
     if (confirm("¿Desea eliminar el registro?")) {
         personas.splice(i, 1);
-        localStorage.setItem('motocicletas', JSON.stringify(personas));
+        localStorage.setItem('clientes', JSON.stringify(personas));
         mostrar();
     }
 }

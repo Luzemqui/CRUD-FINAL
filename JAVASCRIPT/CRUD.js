@@ -8,7 +8,7 @@ function guardar() {
     let marca = document.getElementById("marca").value;
     let modelo = document.getElementById("modelo").value;
 
-    if (nombre === "" || precio === "" || placa === "" || cantidad === "") {
+    if (nombre === "" || precio === "" || placa === "" || cantidad === "" || marca === "" || modelo === "") {
         alert("Todos los campos son obligatorios");
     } else {
 
