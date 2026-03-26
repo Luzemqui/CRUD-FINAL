@@ -66,8 +66,33 @@
             color: #1d1c1c;
         }
 
+        .gra-report {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .gra-report a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: color 0.80s ease;
+        }
+
+        .gra-report a:hover {
+            color:#1d1c1c
+        }
+
         .btn-regresar {
             background-color: #b9ffff;
+            padding: 10px 40px;
+            border-radius: 40px;
+        }
+
+        .btn-siguiente {
+            background-color: aquamarine;
             padding: 10px 40px;
             border-radius: 40px;
         }
@@ -108,10 +133,14 @@
 <body class="bg-light" onload="checkAdminAuth(); mostrar();">
 
     <nav class="navbar">
-        <a href="#" class="admin">ADMIN</a>
+       <a href="#" class="admin">ADMIN</a>
         <div class="nav-links">
-            <a href="#" onclick="logoutAdmin(); return false;" class="btn-regresar">REGRESAR</a>
-            <a href="#" onclick="toggleGrafica()" class="btn-grafica">GRAFICA Y REPORTE</a>
+            <a href="Principal.html" onclick="logoutAdmin(); return false;" class="btn-regresar">REGRESAR A INICIO</a>
+            <a href="CRUD.html" class="btn-siguiente">IR A CRUD 1</a>
+        </div>
+        <div class="gra-report">
+            <a href="#" onclick="toggleGrafica()" class="btn-grafica">Gráfica</a>
+            <a href="#" onclick="toggleReporte()" class="btn-grafica">Reporte</a>
         </div>
     </nav>
 
@@ -161,7 +190,6 @@
                                     <tr>
                                         <th width="200">Nombre</th>
                                         <th width="200">Precio</th>
-                                        <th width="200">Cantidad</th>
                                         <th width="200">Placa</th>
                                         <th width="200">Marca</th>
                                         <th width="200">Modelo</th>

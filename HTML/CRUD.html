@@ -47,6 +47,25 @@
             text-decoration: none;
         }
 
+        .gra-report {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .gra-report a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: color 0.80s ease;
+        }
+
+        .gra-report a:hover {
+            color:#1d1c1c
+        }
+
         .nav-links {
             display: flex;
             flex-direction: column;
@@ -68,6 +87,12 @@
 
         .btn-regresar {
             background-color: #b9ffff;
+            padding: 10px 40px;
+            border-radius: 40px;
+        }
+
+        .btn-siguiente {
+            background-color: aquamarine;
             padding: 10px 40px;
             border-radius: 40px;
         }
@@ -110,7 +135,10 @@
     <nav class="navbar">
         <a href="#" class="admin">ADMIN</a>
         <div class="nav-links">
-            <a href="Principal.html" onclick="logoutAdmin(); return false;" class="btn-regresar">REGRESAR</a>
+            <a href="Principal.html" onclick="logoutAdmin(); return false;" class="btn-regresar">Regresar a inicio</a>
+            <a href="CRUD 2.html" class="btn-siguiente">Ir a CRUD 2</a>
+        </div>
+        <div class="gra-report">
             <a href="#" onclick="toggleGrafica()" class="btn-grafica">Gráfica</a>
             <a href="#" onclick="toggleReporte()" class="btn-grafica">Reporte</a>
         </div>
