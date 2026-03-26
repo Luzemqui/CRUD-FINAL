@@ -18,9 +18,13 @@
         }
 
         body {
-            background-color: #ffffff;
-            margin: 0;
-            padding-top: 120px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #8adbf3 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
         }
 
         .navbar {
@@ -32,7 +36,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 60px;
+            padding: 27px 60px;
             box-shadow: 0px 2px 5px rgb(0, 0, 0);
             z-index: 1000;
         }
@@ -49,7 +53,7 @@
 
         .nav-links {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             gap: 10px;
             align-items: center;
         }
@@ -68,7 +72,7 @@
 
         .gra-report {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             gap: 15px;
             align-items: center;
         }
@@ -133,7 +137,6 @@
 <body class="bg-light" onload="checkAdminAuth(); mostrar();">
 
     <nav class="navbar">
-       <a href="#" class="admin">ADMIN</a>
         <div class="nav-links">
             <a href="Principal.html" onclick="logoutAdmin(); return false;" class="btn-regresar">REGRESAR A INICIO</a>
             <a href="CRUD.html" class="btn-siguiente">IR A CRUD 1</a>
@@ -161,7 +164,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Precio</label>
-                                <input type="text" id="precio" class="form-control">
+                                <input type="number" id="precio" class="form-control">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Placa</label>
