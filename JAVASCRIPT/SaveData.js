@@ -46,7 +46,7 @@ function loginUser() {
   if (user) {
     localStorage.setItem('userSession', JSON.stringify({type: 'user', username}));
     alert('Login exitoso');
-    window.location.href = 'Principal.html';
+    window.location.href = 'After-login.html';
   } else {
     alert('Credenciales inválidas');
   }
