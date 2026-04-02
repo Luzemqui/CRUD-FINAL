@@ -46,7 +46,7 @@ function loginUser() {
   if (user) {
     localStorage.setItem('userSession', JSON.stringify({type: 'user', username}));
     alert('Login exitoso');
-    window.location.href = 'After-login.html';
+    window.location.href = 'Principal.html';
   } else {
     alert('Credenciales inválidas');
   }
@@ -56,7 +56,6 @@ if (personas.getElementById("ADMIN")) {
     
     function guardar() {
 
-        let nombre = document.getElementById("nombre").value;
         let apellido = document.getElementById("apellido").value;
         let edad = document.getElementById("edad").value;
         let placa = document.getElementById("placa").value;
@@ -68,7 +67,6 @@ if (personas.getElementById("ADMIN")) {
         } else {
 
             let persona = {
-                nombre: nombre,
                 apellido: apellido,
                 edad: edad,
                 placa: placa,
@@ -92,7 +90,6 @@ if (personas.getElementById("ADMIN")) {
 
             tabla.innerHTML += `
                 <tr>
-                    <td>${personas[i].nombre}</td>
                     <td>${personas[i].apellido}</td>
                     <td>${personas[i].edad}</td>
                     <td>${personas[i].placa}</td>
@@ -109,7 +106,6 @@ if (personas.getElementById("ADMIN")) {
     }
 
     function editar(i) {
-        document.getElementById("nombre").value = personas[i].nombre;
         document.getElementById("apellido").value = personas[i].apellido;
         document.getElementById("edad").value = personas[i].edad;
         document.getElementById("placa").value = personas[i].placa;
@@ -122,7 +118,6 @@ if (personas.getElementById("ADMIN")) {
     function actualizar() {
 
         let i = document.getElementById("indice").value;
-        let nombre = document.getElementById("nombre").value;
         let apellido = document.getElementById("apellido").value;
         let edad = document.getElementById("edad").value;
         let placa = document.getElementById("placa").value;
@@ -130,11 +125,10 @@ if (personas.getElementById("ADMIN")) {
         let modelo = document.getElementById("modelo").value;
       
 
-        if (nombre === "" || apellido === "" || edad  === "" || placa === "" || marca === "" || modelo === "") {
+        if (apellido === "" || edad  === "" || placa === "" || marca === "" || modelo === "") {
             alert("No se pueden dejar campos vacíos");
         } else {
 
-            personas[i].nombre = nombre;
             personas[i].apellido = apellido;
             personas[i].edad = edad;
             personas[i].placa = placa;
@@ -155,7 +149,6 @@ if (personas.getElementById("ADMIN")) {
         }
 
     function limpiar() {
-        document.getElementById("nombre").value = "";
         document.getElementById("apellido").value = "";
         document.getElementById("edad").value = "";
         document.getElementById("placa").value = "";

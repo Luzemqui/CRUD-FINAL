@@ -32,7 +32,7 @@ function toggleReporte() {
 function generarGrafica() {
     ctx = document.getElementById('myChart').getContext('2d');
     let motos = JSON.parse(localStorage.getItem('motocicletas')) || [];
-    let nombres = motos.map(p => p.nombre);
+    let modelo = motos.map(p => p.modelo);
     let cantidades = motos.map(p => p.cantidad);
 
     if (grafica) {
@@ -42,7 +42,7 @@ function generarGrafica() {
     grafica = new Chart(ctx, {
 type: 'pie',
         data: {
-            labels: nombres,
+            labels: modelo,
             datasets: [{
                 label: 'Cantidad por Motocicleta',
                 data: cantidades,
@@ -139,7 +139,6 @@ function generarReporteCompleto() {
             tbody.innerHTML += `
                 <tr>
                     <td>${index + 1}</td>
-                    <td>${p.nombre || ''}</td>
                     <td>$${parseFloat(p.precio || 0).toLocaleString('es-ES')}</td>
                     <td>${p.cantidad || 0}</td>
                     <td>${p.placa || ''}</td>
@@ -170,7 +169,6 @@ function reporte() {
             detalleRows += `
                 <tr>
                     <td>${index + 1}</td>
-                    <td>${p.nombre || ''}</td>
                     <td>$${parseFloat(p.precio || 0).toLocaleString('es-ES')}</td>
                     <td>${p.cantidad || 0}</td>
                     <td>${p.placa || ''}</td>
@@ -205,7 +203,6 @@ function reporte() {
                 <thead class="table-dark">
                     <tr>
                         <th>#</th>
-                        <th>Nombre</th>
                         <th>Precio</th>
                         <th>Cantidad</th>
                         <th>Placa</th>
