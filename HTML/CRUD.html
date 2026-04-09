@@ -49,7 +49,6 @@
 
         .nav-links {
             display: flex;
-            flex-direction: column;
             gap: 10px;
             align-items: center;
         }
@@ -110,7 +109,8 @@
     <nav class="navbar">
         <a href="#" class="admin">ADMIN</a>
         <div class="nav-links">
-            <a href="Principal.html" onclick="logoutAdmin(); return false;" class="btn-regresar">REGRESAR</a>
+            <a href="Principal.html" onclick="logoutAdmin(); return false;" class="btn-regresar">Regresar</a>
+            <a href="CRUD 2.html" class="btn-regresar">Ir a registar clientes </a>
             <a href="#" onclick="toggleGrafica()" class="btn-grafica">Gráfica</a>
             <a href="#" onclick="toggleReporte()" class="btn-grafica">Reporte</a>
         </div>
@@ -128,7 +128,7 @@
 
                         <div class="row mb-3 g-3">
                             <div class="col-md-6">
-                                <label class="form-label">Nombre</label>
+                                <label class="form-label">Nombre de la motocicleta</label>
                                 <input type="text" id="nombre" class="form-control">
                             </div>
                             <div class="col-md-6">
@@ -251,7 +251,7 @@
                             </table>
                         </div>
                         <div class="text-end mt-3">
-                            <button class="btn btn-success" onclick="window.print()">🖨️ Imprimir Reporte</button>
+                            <button class="btn btn-success" onclick="window.print()" > Imprimir Reporte</button>
                         </div>
                     </div>
                 </div>

@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUD de motocicletas - Lista de personas </title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="../JAVASCRIPT/SaveData.js"></script>
-    <script src="../JAVASCRIPT/CRUD 2.js"></script>
-    <script src="../JAVASCRIPT/Grafica-y-reporte.js"></script>
+<script src="../JAVASCRIPT/SaveData2.js"></script>
+<script src="../JAVASCRIPT/Grafica-y-reporte2.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         * {
@@ -49,7 +48,6 @@
 
         .nav-links {
             display: flex;
-            flex-direction: column;
             gap: 10px;
             align-items: center;
         }
@@ -110,8 +108,10 @@
     <nav class="navbar">
         <a href="#" class="admin">ADMIN</a>
         <div class="nav-links">
-            <a href="#" onclick="logoutAdmin(); return false;" class="btn-regresar">REGRESAR</a>
-            <a href="#" onclick="toggleGrafica()" class="btn-grafica">GRAFICA Y REPORTE</a>
+            <a href="Principal.html" onclick="logoutAdmin(); return false;" class="btn-regresar">Regresar</a>
+            <a href="CRUD.html" class="btn-regresar">Registarar motocicletas nuevas</a>
+            <a href="#" onclick="toggleGrafica()" class="btn-grafica">Gráfica</a>
+            <a href="#" onclick="toggleReporte()" class="btn-grafica">Reporte</a>
         </div>
     </nav>
 
@@ -159,13 +159,12 @@
                             <table class="table table-bordered table-hover">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th width="200">Nombre</th>
-                                        <th width="200">Precio</th>
-                                        <th width="200">Cantidad</th>
-                                        <th width="200">Placa</th>
+                                        <th width="200">Nombre</th>    
+                                        <th width="200">Precio</th> 
+                                        <th width="200">Placa</th> 
                                         <th width="200">Marca</th>
-                                        <th width="200">Modelo</th>
-                                        <th width="50">Acciones</th>
+                                        <th width="200">Modelo</th> 
+                                        <th width="100">Acciones</th> 
                                     </tr>
                                 </thead>
                                 <tbody id="tabla"></tbody>
@@ -199,7 +198,7 @@
             <div class="col-12 col-lg-10">
                 <div class="card shadow mx-auto" style="max-width: 1300px; margin-top: 20px;">
                     <div class="card-header bg-success text-white text-center">
-                        <h4 class="mb-0">Gráfica y Reporte de Motocicletas</h4>
+                        <h4 class="mb-0">Gráfica de Clientes</h4>
                         <button class="btn btn-outline-light btn-sm mt-2" onclick="toggleGrafica()">← Volver a CRUD</button>
                     </div>
                     <div class="card-body">
@@ -210,9 +209,42 @@
                                 </div>
                             </div>
                             <div class="col-lg-4">
-                                <button class="btn btn-primary w-100 mb-3" onclick="generarReporte()">Generar Reporte</button>
-                                <div id="reporteTable" class="table-responsive"></div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid grafica-section" id="reporteSection">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="card shadow mx-auto" style="max-width: 1300px; margin-top: 20px;">
+                    <div class="card-header bg-info text-white text-center">
+                        <h4 class="mb-0">Reporte Completo de Clientes</h4>
+                        <button class="btn btn-outline-light btn-sm mt-2" onclick="toggleReporte()">← Volver a CRUD</button>
+                    </div>
+                    <div class="card-body">
+                        <div id="resumenReporte" class="row mb-4"></div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover" id="tablaReporte">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nombre</th>
+                                        <th>Precio</th>
+                                        <th>Placa</th>
+                                        <th>Marca</th>
+                                        <th>Modelo</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                        <div class="text-end mt-3">
+                            <button class="btn btn-success" onclick="window.print()"> Imprimir Reporte</button>
                         </div>
                     </div>
                 </div>
