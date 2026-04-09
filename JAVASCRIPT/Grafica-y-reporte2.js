@@ -84,7 +84,7 @@ function generarGrafica() {
 function generarReporteCompleto() {
     let clientes = JSON.parse(localStorage.getItem('clientes')) || [];
     
-    // Resumen
+    
     let totalPrecio = clientes.reduce((sum, p) => sum + (parseFloat(p.precio || 0)), 0);
     let marcas = [...new Set(clientes.map(p => p.marca).filter(m => m))].join(', ');
     
@@ -100,7 +100,7 @@ function generarReporteCompleto() {
         </div>
     `;
     
-    // Tabla completa
+ 
     let tbody = document.querySelector('#tablaReporte tbody');
     tbody.innerHTML = '';
     

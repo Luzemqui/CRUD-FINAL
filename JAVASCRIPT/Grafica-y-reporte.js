@@ -106,7 +106,7 @@ function generarReporteCompleto() {
     let personas = JSON.parse(localStorage.getItem('motocicletas')) || [];
     let usuarios = JSON.parse(localStorage.getItem('userData')) || [];
     
-    // Resumen
+    
     let totalMotos = personas.reduce((sum, p) => sum + parseInt(p.cantidad || 0), 0);
     let totalPrecio = personas.reduce((sum, p) => sum + (parseFloat(p.precio || 0) * parseInt(p.cantidad || 0)), 0);
     let numUsers = usuarios.length;
@@ -127,7 +127,7 @@ function generarReporteCompleto() {
         </div>
     `;
     
-    // Tabla completa
+
     let tbody = document.querySelector('#tablaReporte tbody');
     tbody.innerHTML = '';
     
