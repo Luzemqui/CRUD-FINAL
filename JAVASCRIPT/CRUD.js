@@ -1,17 +1,19 @@
 let personas = JSON.parse(localStorage.getItem('motocicletas')) || [];
 
 function guardar() {
+    let nombre = document.getElementById("nombre").value;
     let precio = document.getElementById("Precio").value;
     let cantidad = document.getElementById("cantidad").value;
     let placa = document.getElementById("placa").value;
     let marca = document.getElementById("marca").value;
     let modelo = document.getElementById("modelo").value;
 
-    if (precio === "" || cantidad === "" || placa === "" || marca === "" || modelo === "") {
+    if (nombre === "" || precio === "" || cantidad === "" || placa === "" || marca === "" || modelo === "") {
         alert("Todos los campos son obligatorios");
     } else {
 
         let persona = {
+            nombre: nombre,
             precio: precio,
             cantidad: cantidad,
             placa: placa,
@@ -34,6 +36,7 @@ function mostrar() {
     for (let i = 0; i < personas.length; i++) {
         tabla.innerHTML += `
             <tr>
+                <td>${personas[i].nombre}</td>
                 <td>$${personas[i].precio}</td>
                 <td>${personas[i].cantidad}</td>
                 <td>${personas[i].placa}</td>
@@ -49,6 +52,7 @@ function mostrar() {
 }
 
 function editar(i) {
+    document.getElementById("nombre").value = personas[i].nombre;
     document.getElementById("Precio").value = personas[i].precio;
     document.getElementById("cantidad").value = personas[i].cantidad;
     document.getElementById("placa").value = personas[i].placa;
@@ -60,13 +64,14 @@ function editar(i) {
 
 function actualizar() {
     let i = document.getElementById("indice").value;
+    let nombre = document.getElementById("nombre").value;
     let precio = document.getElementById("Precio").value;
     let cantidad = document.getElementById("cantidad").value;
     let placa = document.getElementById("placa").value;
     let marca = document.getElementById("marca").value;
     let modelo = document.getElementById("modelo").value;
 
-    if (precio === "" || cantidad === "" || placa === "" || marca === "" || modelo === "") {
+    if (nombre === "" || precio === "" || cantidad === "" || placa === "" || marca === "" || modelo === "") {
         alert("No se pueden dejar campos vacíos");
     } else {
         personas[i].precio = precio;
