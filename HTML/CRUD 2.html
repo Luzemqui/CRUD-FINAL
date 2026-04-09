@@ -17,9 +17,13 @@
         }
 
         body {
-            background-color: #ffffff;
-            margin: 0;
-            padding-top: 120px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #8adbf3 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
         }
 
         .navbar {
@@ -31,7 +35,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 60px;
+            padding: 27px 60px;
             box-shadow: 0px 2px 5px rgb(0, 0, 0);
             z-index: 1000;
         }
@@ -64,8 +68,33 @@
             color: #1d1c1c;
         }
 
+        .gra-report {
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .gra-report a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: color 0.80s ease;
+        }
+
+        .gra-report a:hover {
+            color:#1d1c1c
+        }
+
         .btn-regresar {
             background-color: #b9ffff;
+            padding: 10px 40px;
+            border-radius: 40px;
+        }
+
+        .btn-siguiente {
+            background-color: aquamarine;
             padding: 10px 40px;
             border-radius: 40px;
         }
@@ -106,7 +135,6 @@
 <body class="bg-light" onload="checkAdminAuth(); mostrar();">
 
     <nav class="navbar">
-        <a href="#" class="admin">ADMIN</a>
         <div class="nav-links">
             <a href="Principal.html" onclick="logoutAdmin(); return false;" class="btn-regresar">Regresar</a>
             <a href="CRUD.html" class="btn-regresar">Registarar motocicletas nuevas</a>
@@ -132,7 +160,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Precio</label>
-                                <input type="text" id="precio" class="form-control">
+                                <input type="number" id="precio" class="form-control">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Placa</label>

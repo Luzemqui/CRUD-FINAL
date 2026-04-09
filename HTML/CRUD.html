@@ -18,9 +18,13 @@
         }
 
         body {
-            background-color: #ffffff;
-            margin: 0;
-            padding-top: 120px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #8adbf3 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
         }
 
         .navbar {
@@ -32,7 +36,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 60px;
+            padding: 27px 60px;
             box-shadow: 0px 2px 5px rgb(0, 0, 0);
             z-index: 1000;
         }
@@ -45,6 +49,25 @@
             font-weight: bold;
             font-size: 24px;
             text-decoration: none;
+        }
+
+        .gra-report {
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .gra-report a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: color 0.80s ease;
+        }
+
+        .gra-report a:hover {
+            color:#1d1c1c
         }
 
         .nav-links {
@@ -67,6 +90,12 @@
 
         .btn-regresar {
             background-color: #b9ffff;
+            padding: 10px 40px;
+            border-radius: 40px;
+        }
+
+        .btn-siguiente {
+            background-color: aquamarine;
             padding: 10px 40px;
             border-radius: 40px;
         }
@@ -107,7 +136,6 @@
 <body class="bg-light" onload="checkAdminAuth(); mostrar();">
 
     <nav class="navbar">
-        <a href="#" class="admin">ADMIN</a>
         <div class="nav-links">
             <a href="Principal.html" onclick="logoutAdmin(); return false;" class="btn-regresar">Regresar</a>
             <a href="CRUD 2.html" class="btn-regresar">Ir a registar clientes </a>
@@ -121,7 +149,7 @@
 <div class="col-12 col-lg-10">
         <div class="card shadow mx-auto" style="max-width: 1300px; max-height: 130000px;">
                     <div class="card-header bg-primary text-white text-center">
-                        <h4 class="mb-0">CRUD de motocicletas</h4>
+                        <h4 class="mb-0">Registrar nuevas motocicletas</h4>
                     </div>
                     <div class="card-body">
                         <input type="hidden" id="indice">
@@ -133,7 +161,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Precio</label>
-                                <input type="text" id="precio" class="form-control">
+                                 <input type="number" id="Precio" class="form-control">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Cantidad</label>
@@ -164,7 +192,6 @@
                             <table class="table table-bordered table-hover">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th width="200">Nombre</th>
                                         <th width="200">Precio</th>
                                         <th width="200">Cantidad</th>
                                         <th width="200">Placa</th>
@@ -238,7 +265,6 @@
                                 <thead class="table-dark">
                                     <tr>
                                         <th>#</th>
-                                        <th>Nombre</th>
                                         <th>Precio</th>
                                         <th>Cantidad</th>
                                         <th>Placa</th>
